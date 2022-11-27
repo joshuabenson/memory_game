@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.Grid {
+  width: 600px;
+  background-color: black;
+}
+
+.row {
+  display: inline-flex;
+}
+
+.Square {
+  text-shadow: 1px 1px 2px lightgrey;
+  margin: 2px;
+  border-radius: 15px;
+  min-width: 120px;
+  color: black;
+  line-height: 120px;
+  min-height: 120px;
+  background-color: antiquewhite;
+}
+
+.column {
+  display: block;
+}

@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import RandomNumber from './components/randomNumber.js'
 import './App.css';
+import Grid from './components/grid';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <p>
           { RandomNumber() }
           { console.log('bitch') }
+          { Grid()}
         </p>
         <a
           className="App-link"
