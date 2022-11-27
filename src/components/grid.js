@@ -1,12 +1,20 @@
 import React from 'react';
 import Square from './square.js';
 import { useState } from 'react';
+import _ from '../../node_modules/underscore/underscore.js';
 
-// import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import App from './App';
+let flashedValues = [0, 4, 6];
+let clickedValues = [];
+let winState;
+let failState = false;
+
+const checkWinState = () => {
+    return _.equals(flashedValues, clickedValues);
+};
+
 
 const Grid = () => {
+    let [winState, setWinState] = useState({fail: false, win: false});
     let clickState = useState([]);
     let rows = [], columns = [], gridLength = 3;
 
@@ -14,6 +22,7 @@ const Grid = () => {
         rows.push(i);
         columns.push(i);
     }
+
     return (
       <div className='Grid'>
         {rows.map((row) => {
@@ -21,7 +30,14 @@ const Grid = () => {
                 <div className='row'>
                     {columns.map((column)=>{
                         return (
-                            <Square index={(gridLength * row) + column} clickState={clickState}/>
+                            <Square flashedValues={flashedValues}
+                                clickState={clickState}
+                                winState={winState}
+                                highlighted={flashedValues.includes((gridLength * row) + column)}
+                                setWinState={setWinState}
+                                index={(gridLength * row) + column}
+                                className={winState.fail ? 'fail' : ''}
+                            />
                         );
                     })}
                 </div>

@@ -10,8 +10,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           { RandomNumber() }
-          { console.log('bitch') }
-          { Grid()}
+          <Grid></Grid>
         </p>
         <a
           className="App-link"

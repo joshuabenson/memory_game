@@ -42,10 +42,6 @@
   background-color: black;
 }
 
-.row {
-  display: inline-flex;
-}
-
 .Square {
   text-shadow: 1px 1px 2px lightgrey;
   margin: 2px;
@@ -57,6 +53,14 @@
   background-color: antiquewhite;
 }
 
+.row {
+  display: inline-flex;
+}
+
 .column {
   display: block;
+}
+
+.fail.highlighted {
+    background-color: red;
 }
