@@ -3,17 +3,39 @@ import Square from './square.js';
 import { useState } from 'react';
 import _ from '../../node_modules/underscore/underscore.js';
 
-let flashedValues = [0, 4, 6];
 let clickedValues = [];
 let winState;
 let failState = false;
 
-const checkWinState = () => {
-    return _.equals(flashedValues, clickedValues);
-};
+// const checkWinState = () => {
+//     return _.equals(flashedValues, clickedValues);
+// };
 
+
+const generateFlashedValues = (gridLength) => {
+    let values = [];
+    for (let i = 0; i < Math.floor(gridLength + (gridLength/2)); i++) {
+        // min is 0
+        const min = Math.ceil(0);
+        // max is gridLength * gridLength - 1
+        const max = Math.floor((gridLength * gridLength) - 1);
+
+        values.push(Math.floor(Math.random() * (max - min + 1)) + min);
+        // get random number between min and max
+        // while (values.length < Math.floor(gridLength + (gridLength/2))) {
+        //     let candidate = Math.floor(Math.random() * (max - min + 1)) + min;
+        //     if (!values.includes(candidate)) {
+        //         values.push(candidate);
+        //     }
+        // }
+    }
+    console.log('flashedValues', values);
+    return values;
+};
+let flashedValues = generateFlashedValues(3);
 
 const Grid = () => {
+
     let [winState, setWinState] = useState({fail: false, win: false});
     let clickState = useState([]);
     let rows = [], columns = [], gridLength = 3;
